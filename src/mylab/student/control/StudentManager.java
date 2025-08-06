@@ -1,18 +1,20 @@
-// StudentManager.java - Control 클래스
 package mylab.student.control;
 
 import mylab.student.entity.Student;
+import mylab.student.exception.InvalidGradeException;
 
 public class StudentManager {
     public static void main(String[] args) {
-        // 학생 객체 생성
-        Student student = new Student("20210001", "김민수", "컴퓨터공학", 3);
-        
-        // 학생 정보 출력
-        System.out.println(student);
-        
-        // 잘못된 학년으로 변경 시도
-        System.out.println("5학년으로 변경");
-        student.setGrade(5);
+        try {
+            // 유효한 학년으로 객체 생성
+            Student student1 = new Student("S1001", "김민수", "컴퓨터공학", 3);
+            System.out.println(student1.getName() + "/" + student1.getMajor() + "/" + student1.getGrade() + "학년");
+
+            // 유효하지 않은 학년으로 변경 시도
+            System.out.println("5학년으로 변경");
+            student1.setGrade(5); 
+        } catch (InvalidGradeException e) {
+            System.out.println(e.getMessage()); // 예외 메시지 출력
+        }
     }
 }
