@@ -3,19 +3,19 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean id="product1" class="com.example.Product">
+    <bean id="product1" class="mylab.order.di.xml.Product">
         <property name="id" value="P001" />
-        <property name="name" value="³ëÆ®ºÏ" />
-        <property name="price" value="1200000" />
+        <property name="name" value="ë…¸íŠ¸ë¶" />
+        <property name="price" value="1500000" />
     </bean>
 
-    <bean id="product2" class="com.example.Product">
-        <constructor-arg value="P002" />
-        <constructor-arg value="½º¸¶Æ®Æù" />
-        <constructor-arg value="800000" />
+    <bean id="product2" class="mylab.order.di.xml.Product">
+        <constructor-arg name="id" value="P002" />
+        <constructor-arg name="name" value="ìŠ¤ë§ˆíŠ¸í°" />
+        <constructor-arg name="price" value="800000" />
     </bean>
 
-    <bean id="shoppingCart" class="com.example.ShoppingCart">
+    <bean id="shoppingCart" class="mylab.order.di.xml.ShoppingCart">
         <property name="products">
             <list>
                 <ref bean="product1" />
@@ -24,7 +24,7 @@
         </property>
     </bean>
 
-    <bean id="orderService" class="com.example.OrderService">
+    <bean id="orderService" class="mylab.order.di.xml.OrderService">
         <property name="shoppingCart" ref="shoppingCart" />
     </bean>
 
